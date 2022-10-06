@@ -1,18 +1,17 @@
-name: integracion continua ERC721A
+name: integracion continua con node.js ERC721A
 
 on:
-  pull_request: 
-    branches: [master]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   ci_to_master:
     runs-on: ubuntu-latest
-     steps:
+    steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-       with:
+        with:
           node-version: 10
       - run: npm ci
       - run: npm test
       - run: npm run build
-      

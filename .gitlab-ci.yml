@@ -1,0 +1,18 @@
+
+
+stages:      
+  - build
+  - test
+
+build:    
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+
+test:      
+  stage: test
+  environment: production
+  script:
+    - echo "Testing application..."
+    - echo "Application successfully tested."

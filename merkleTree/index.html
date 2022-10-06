@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/merkletreejs@latest/merkletree.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/keccak256@latest/keccak256.js"></script>
+    <title>Arbol de Merkle</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const addresses = [
+            "0x104d7e4b44F64c633Be6B099995eecb0Ac344611",
+            "0x6761E96e11EAe3Be978A99F34E0bD75a118c77B7",
+        ]
+
+        const leaves = addresses.map(x => keccak256(x))
+        const tree = new MerkleTree(leaves, keccak256, { sortPairs: true})
+        const buf2hex = x => '0x' + x.toString('hex')
+        
+        const proof = tree.getProof(keccak256(addresses[0])).map(x => buf2hex(x.data))
+        
+        console.log(buf2hex(tree.getRoot()))
+        console.log(proof)
+    </script>
+</body>
+</html>

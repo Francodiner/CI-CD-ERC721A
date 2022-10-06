@@ -1,0 +1,17 @@
+El objetivo de ERC721A es proporcionar una implementación totalmente compatible con IERC721 con ahorros significativos de gas 
+para acuñar múltiples NFT en una sola transacción.
+
+El contrato ERC721A permitirá mintear múltiples NFT por el mismo costo de mintear un solo NFT.
+
+El objetivo del contrato son 3 optimizaciones de los estandares ERC721 y ERC721Enumerable de OpenZeppelin
+
+Optimización 1: eliminación de almacenamiento duplicado.
+
+Optimización 2: actualizar el saldo del propietario una vez por solicitud de minteo de lote, en lugar de NFT minteado.
+-Por ejemplo, Alicia tiene 2 Tokens y quiere comprar 5 mas, en Solidity cuesta gas actualizar un valor almacenado.
+Si estamos rastreando en el almacenamiento, cuántos tokens posee Alicia, sería más económico actualizar las existencias de Alicia de 2 
+directamente a 7 con una actualización, en lugar de actualizar ese valor 5 veces (una vez por token adicional, de 2 a 3, 3 a 4, etc.).
+
+Optimización 3: actualizar los datos del propietario una vez por solicitud de minteo, en lugar de por NFT minteado.
+
+

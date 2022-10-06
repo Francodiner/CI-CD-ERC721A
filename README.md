@@ -8,15 +8,8 @@ This repository includes the contracts, an explanation of the ERC721A standard a
 
 ## Index
 
-* Clone
 * Installation
 * Run
-
-## Clone
-
-```
-git clone https://gitlab.com/dracoder/blockchain-team/erc721a-minting.git
-```
 
 ## Installation
 
